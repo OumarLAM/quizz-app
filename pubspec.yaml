@@ -17,3 +17,10 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/images/films.png
+    - assets/images/technologies.png
+    - assets/images/history.png
+    - assets/images/math.png
+    - assets/images/football.png
+    - assets/images/geography.png

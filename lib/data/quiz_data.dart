@@ -4,7 +4,7 @@ import '../models/question.dart';
 List<Category> categories = [
   Category(
     'Films',
-    'assets/images/films.jpg',
+    'assets/images/films.png',
     [
       Question('The movie "Inception" was directed by Christopher Nolan.', true),
       Question('Leonardo DiCaprio won an Oscar for his role in "Titanic".', false),
@@ -19,8 +19,8 @@ List<Category> categories = [
     ],
   ),
   Category(
-    'Music',
-    'assets/images/music.jpg',
+    'Technology',
+    'assets/images/technologies.png',
     [
       Question('The Beatles were formed in Liverpool, England.', true),
       Question('Michael Jackson\'s "Thriller" is the best-selling album of all time.', true),
@@ -36,7 +36,7 @@ List<Category> categories = [
   ),
   Category(
     'History',
-    'assets/images/history.jpg',
+    'assets/images/history.png',
     [
       Question('The French Revolution started in 1789.', true),
       Question('The United States gained independence in 1776.', true),
@@ -52,7 +52,7 @@ List<Category> categories = [
   ),
   Category(
     'Math',
-    'assets/images/math.jpg',
+    'assets/images/math.png',
     [
       Question('The square root of 144 is 12.', true),
       Question('Pi is exactly equal to 22/7.', false),
@@ -68,7 +68,7 @@ List<Category> categories = [
   ),
   Category(
     'Football',
-    'assets/images/football.jpg',
+    'assets/images/football.png',
     [
       Question('A standard football match consists of two 45-minute halves.', true),
       Question('The FIFA World Cup is held every 5 years.', false),
@@ -84,7 +84,7 @@ List<Category> categories = [
   ),
   Category(
     'Geography',
-    'assets/images/geography.jpg',
+    'assets/images/geography.png',
     [
       Question('The Nile is the longest river in the world.', true),
       Question('Mount Everest is the highest mountain on Earth.', true),
