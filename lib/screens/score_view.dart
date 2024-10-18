@@ -5,28 +5,28 @@ class ScoreView extends StatelessWidget {
   final int score;
   final int totalQuestions;
 
-  ScoreView({required this.score, required this.totalQuestions});
+  const ScoreView({super.key, required this.score, required this.totalQuestions});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Quiz Result'),
+        title: const Text('Quiz Result'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
+            const Text(
               'Your Score',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Text(
               '$score / $totalQuestions',
-              style: TextStyle(fontSize: 48, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 48, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 40),
+            const SizedBox(height: 40),
             ElevatedButton(
               onPressed: () {
                 Navigator.pushAndRemoveUntil(
@@ -35,7 +35,7 @@ class ScoreView extends StatelessWidget {
                   (route) => false,
                 );
               },
-              child: Text('Back to Categories'),
+              child: const Text('Back to Categories'),
             ),
           ],
         ),
