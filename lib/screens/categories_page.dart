@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../data/quiz_data.dart';
+import '../models/category.dart';
 import 'detailed_view.dart';
 
 class CategoriesPage extends StatelessWidget {
@@ -9,19 +10,35 @@ class CategoriesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Quiz Categories'),
-        ),
-        body: Stack(
-          children: [
-            Positioned.fill(
-              child: Image.asset(
-                'assets/images/background.png',
-                fit: BoxFit.cover,
-              ),
+          centerTitle: true,
+          title: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child: const Text(
+              'Quiz Categories',
+              style:
+                  TextStyle(
+                    color: Colors.black, 
+                    fontFamily: 'IBM',
+                    fontWeight: FontWeight.bold,
+                  ),
             ),
-
-            GridView.builder(
+          ),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+        ),
+        extendBodyBehindAppBar: true,
+        body: Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/images/background.png'),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: Center(
+            child: GridView.builder(
               padding: const EdgeInsets.all(16),
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 crossAxisSpacing: 16,
@@ -29,40 +46,97 @@ class CategoriesPage extends StatelessWidget {
               ),
               itemCount: categories.length,
               itemBuilder: (context, index) {
-                return GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) =>
-                            DetailedView(category: categories[index]),
-                      ),
-                    );
-                  },
-                  child: Card(
-                    elevation: 4,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          categories[index].imageUrl,
-                          height: 100,
-                          fit: BoxFit.cover,
-                        ),
-                        const SizedBox(height: 8),
-                        Text(
-                          categories[index].name,
-                          style: const TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                  ),
-                );
+                return CategoryCard(category: categories[index], index: index);
               },
             ),
-          ],
-        )
-      );
+          ),
+        ));
+  }
+}
+
+class CategoryCard extends StatefulWidget {
+  final Category category;
+  final int index;
+
+  const CategoryCard({super.key, required this.category, required this.index});
+
+  @override
+  _CategoryCardState createState() => _CategoryCardState();
+}
+
+class _CategoryCardState extends State<CategoryCard> {
+  bool _isHovered = false;
+
+  Color _getCategoryColor() {
+    switch (widget.index) {
+      case 0:
+        return Colors.blue; 
+      case 1:
+        return Colors.purple; 
+      case 2:
+        return Colors.orange; 
+      case 3:
+        return Colors.green; 
+      case 4:
+        return Colors.red; 
+      case 5:
+        return Colors.teal;
+      default:
+        return Colors.grey;
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MouseRegion(
+      onEnter: (_) => setState(() => _isHovered = true),
+      onExit: (_) => setState(() => _isHovered = false),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        transform: Matrix4.identity()..scale(_isHovered ? 1.05 : 1.0),
+        child: GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => DetailedView(category: widget.category),
+              ),
+            );
+          },
+          child: Card(
+            elevation: _isHovered ? 18 : 4,
+            color: _getCategoryColor(),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  widget.category.imageUrl,
+                  height: 80,
+                  width: 80,
+                  fit: BoxFit.cover,
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  widget.category.name,
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontFamily: 'IBM',
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                    shadows: [
+                      Shadow(
+                        blurRadius: 2.0,
+                        color: Colors.black.withOpacity(0.3),
+                        offset: const Offset(1, 1),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }

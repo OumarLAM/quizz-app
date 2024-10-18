@@ -25,3 +25,12 @@ flutter:
     - assets/images/math.png
     - assets/images/football.png
     - assets/images/geography.png
+  fonts:
+    - family: IBM
+      fonts:
+        - asset: assets/fonts/IBM_Plex_Mono/Bold.ttf
+        - asset: assets/fonts/IBM_Plex_Mono/Light.ttf
+        - asset: assets/fonts/IBM_Plex_Mono/Medium.ttf
+        - asset: assets/fonts/IBM_Plex_Mono/Regular.ttf
+        - asset: assets/fonts/IBM_Plex_Mono/SemiBold.ttf
+        - asset: assets/fonts/IBM_Plex_Mono/Thin.ttf
