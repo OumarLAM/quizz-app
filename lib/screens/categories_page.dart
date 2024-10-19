@@ -96,14 +96,14 @@ class _CategoryCardState extends State<CategoryCard> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => DetailedView(category: widget.category),
+            builder: (context) => DetailedView(category: widget.category, index: widget.index)
           ),
         );
       },
       child: AnimatedContainer(
           duration: const Duration(milliseconds: 100),
           transform: Matrix4.identity()
-            ..scale(_isTapped ? 1.05 : 1.0), 
+            ..scale(_isTapped ? 1.05 : 1.0),
           child: Card(
             elevation: _isTapped ? 18 : 4,
             color: _getCategoryColor(),
