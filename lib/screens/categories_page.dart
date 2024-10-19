@@ -15,12 +15,10 @@ class CategoriesPage extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: const Text(
               'Quiz Categories',
-              style:
-                  TextStyle(
-                    color: Colors.black, 
-                    fontFamily: 'IBM',
-                    fontWeight: FontWeight.bold,
-                  ),
+              style: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
           backgroundColor: Colors.transparent,
@@ -65,20 +63,20 @@ class CategoryCard extends StatefulWidget {
 }
 
 class _CategoryCardState extends State<CategoryCard> {
-  bool _isHovered = false;
+  bool _isTapped = false;
 
   Color _getCategoryColor() {
     switch (widget.index) {
       case 0:
-        return Colors.blue; 
+        return Colors.blue;
       case 1:
-        return Colors.purple; 
+        return Colors.purple;
       case 2:
-        return Colors.orange; 
+        return Colors.orange;
       case 3:
-        return Colors.green; 
+        return Colors.green;
       case 4:
-        return Colors.red; 
+        return Colors.red;
       case 5:
         return Colors.teal;
       default:
@@ -88,23 +86,26 @@ class _CategoryCardState extends State<CategoryCard> {
 
   @override
   Widget build(BuildContext context) {
-    return MouseRegion(
-      onEnter: (_) => setState(() => _isHovered = true),
-      onExit: (_) => setState(() => _isHovered = false),
+    return GestureDetector(
+      onTapDown: (_) =>
+          setState(() => _isTapped = true), 
+      onTapUp: (_) =>
+          setState(() => _isTapped = false), 
+      onTapCancel: () => setState(() => _isTapped = false),
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => DetailedView(category: widget.category),
+          ),
+        );
+      },
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: 200),
-        transform: Matrix4.identity()..scale(_isHovered ? 1.05 : 1.0),
-        child: GestureDetector(
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => DetailedView(category: widget.category),
-              ),
-            );
-          },
+          duration: const Duration(milliseconds: 100),
+          transform: Matrix4.identity()
+            ..scale(_isTapped ? 1.05 : 1.0), 
           child: Card(
-            elevation: _isHovered ? 18 : 4,
+            elevation: _isTapped ? 18 : 4,
             color: _getCategoryColor(),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -120,7 +121,6 @@ class _CategoryCardState extends State<CategoryCard> {
                   widget.category.name,
                   style: TextStyle(
                     fontSize: 18,
-                    fontFamily: 'IBM',
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                     shadows: [
@@ -134,9 +134,7 @@ class _CategoryCardState extends State<CategoryCard> {
                 ),
               ],
             ),
-          ),
-        ),
-      ),
+          )),
     );
   }
 }

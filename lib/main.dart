@@ -16,8 +16,9 @@ class MainApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
+        fontFamily: 'IBM',
       ),
-      home: CategoriesPage(),
+      home: const CategoriesPage(),
     );
   }
 }
