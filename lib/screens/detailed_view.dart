@@ -198,8 +198,7 @@ class _DetailedViewState extends State<DetailedView>
                       child: Text(
                         _feedbackText,
                         style: TextStyle(
-                          fontSize: 120,
-                          fontWeight: FontWeight.bold,
+                          fontSize: 100,
                           color: _feedbackText == 'BIIIM'
                               ? Colors.green
                               : Colors.red,
