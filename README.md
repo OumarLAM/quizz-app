@@ -17,6 +17,26 @@ Here are some glimpses of the app in action:
 ![Detailed Page](./assets/images/detailedpage.png)
 ![Score Page](./assets/images/scorepage.png)
 
+## Future Improvements
+
+* **Question-Specific Images**: Add relevant images for each question to enhance visual learning and engagement.
+* **Timer Feature**: 
+  - Implement a countdown timer for each question
+  - Automatic progression to next question when time expires
+  - Customizable time limits per difficulty level
+* **Difficulty Levels**:
+  - Easy, medium, and hard modes
+  - Tailored questions for each difficulty level
+  - Progressive difficulty system
+* **Leaderboard System**:
+  - Global rankings for all users
+  - Category-specific leaderboards
+  - Weekly and all-time high scores
+* **Question Randomization**:
+  - Shuffle questions within categories
+  - Ensure unique question order in each playthrough
+  - Smart shuffling to avoid recent repetitions
+
 ## Getting Started
 
 To get started with this project, clone the repository and ensure you have Flutter installed on your machine.
