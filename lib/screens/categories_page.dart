@@ -87,23 +87,20 @@ class _CategoryCardState extends State<CategoryCard> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTapDown: (_) =>
-          setState(() => _isTapped = true), 
-      onTapUp: (_) =>
-          setState(() => _isTapped = false), 
+      onTapDown: (_) => setState(() => _isTapped = true),
+      onTapUp: (_) => setState(() => _isTapped = false),
       onTapCancel: () => setState(() => _isTapped = false),
       onTap: () {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => DetailedView(category: widget.category, index: widget.index)
-          ),
+              builder: (context) =>
+                  DetailedView(category: widget.category, index: widget.index)),
         );
       },
       child: AnimatedContainer(
           duration: const Duration(milliseconds: 100),
-          transform: Matrix4.identity()
-            ..scale(_isTapped ? 1.05 : 1.0),
+          transform: Matrix4.identity()..scale(_isTapped ? 1.05 : 1.0),
           child: Card(
             elevation: _isTapped ? 18 : 4,
             color: _getCategoryColor(),

@@ -76,7 +76,7 @@ class _DetailedViewState extends State<DetailedView>
     });
     _animationController.forward(from: 0);
 
-    Timer(Duration(milliseconds: 500), () {
+    Timer(const Duration(milliseconds: 500), () {
       setState(() {
         _showFeedback = false;
       });
@@ -87,17 +87,17 @@ class _DetailedViewState extends State<DetailedView>
   Color _getCategoryColor() {
     switch (widget.index) {
       case 0:
-        return Colors.blue.withOpacity(0.7); // Films
+        return Colors.blue.withOpacity(0.7);
       case 1:
-        return Colors.purple.withOpacity(0.7); // Music
+        return Colors.purple.withOpacity(0.7);
       case 2:
-        return Colors.orange.withOpacity(0.7); // History
+        return Colors.orange.withOpacity(0.7);
       case 3:
-        return Colors.green.withOpacity(0.7); // Math
+        return Colors.green.withOpacity(0.7);
       case 4:
-        return Colors.red.withOpacity(0.7); // Football
+        return Colors.red.withOpacity(0.7);
       case 5:
-        return Colors.teal.withOpacity(0.7); // Geography
+        return Colors.teal.withOpacity(0.7);
       default:
         return Colors.grey.withOpacity(0.7);
     }
@@ -110,15 +110,18 @@ class _DetailedViewState extends State<DetailedView>
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.category.name),
+        title: Text(
+          widget.category.name,
+          style: const TextStyle(fontWeight: FontWeight.bold),
+        ),
         backgroundColor: categoryColor,
         bottom: PreferredSize(
-          preferredSize: Size.fromHeight(4.0),
+          preferredSize: const Size.fromHeight(4.0),
           child: LinearProgressIndicator(
             value:
                 (_currentQuestionIndex + 1) / widget.category.questions.length,
             backgroundColor: Colors.grey[300],
-            valueColor: AlwaysStoppedAnimation<Color>(Colors.black),
+            valueColor: const AlwaysStoppedAnimation<Color>(Colors.black),
           ),
         ),
       ),
